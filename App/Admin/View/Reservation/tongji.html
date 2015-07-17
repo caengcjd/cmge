@@ -1,0 +1,49 @@
+<extend name="Public/base"/>
+<block name="body">
+	<!-- 标题栏 -->
+	
+	<div class="main-title">
+		<h2>预约统计</h2>
+	</div>
+
+	<!-- 数据表格 -->
+	<div class="data-table">
+		<table class="">
+			<thead>
+				<tr>
+					<th>日期</th>
+					<th>PC</th>
+					<th>WAP</th>
+					<th>总数</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<notempty name="_list">
+				<volist name="_list" id="info">
+					<tr>
+						<td>{$info.date}</td>
+						<td>{$info.pc}</td>
+						<td>{$info.wap}</td>
+						<td>{$info.count}</td>
+						<td><a href="/Admin/reservation/index.html?created={$info.date}&end_time={$info.date}">查看详情</a></td>
+					</tr>
+				</volist>
+					<tr>
+						<td>总数</td>
+						<td>{$pccount}</td>
+						<td>{$wapcount}</td>
+						<td>{$zongcount}</td>
+						<td><a href="/Admin/reservation/index.html">查看详情</a></td>
+					</tr>
+				<else/>
+				<td colspan="5" class="text-center"> aOh! 暂时还没有内容! </td>
+				</notempty>
+			</tbody>
+		</table>
+	</div>
+	<!-- 分页 -->
+	<div class="page">{$_page}</div>
+	<!-- /分页 --> 
+</block>
+
